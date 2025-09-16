@@ -146,6 +146,15 @@ public class Main {
                 .collect(Collectors.counting());
     }
 
+    public static List<List<Integer>> generatePairsWithEvenSum() {
+        return IntStream.rangeClosed(1, 5)
+                .boxed()
+                .flatMap(a -> IntStream.rangeClosed(1, 5)
+                        .filter(b -> (a+b) % 2 == 0)
+                        .mapToObj(b -> List.of(a, b)))
+                .toList();
+    }
+
     public static void main(String[] args) {
         List<Integer> numbers = List.of(1,2,3,10,20,30);
         System.out.println(countEven(numbers));
